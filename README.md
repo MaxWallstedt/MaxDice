@@ -6,11 +6,11 @@ MaxDice is a cross-platform text mode dice emulator. The advantage of using MaxD
 
 When you start MaxDice, you see a fabulous welcome screen (created by me). Press 'enter' to enter or 'q' to exit the program ('q' is short for "quit"). Once you've entered, type in the amount of sides you wish your die to have (not 0), and press 'enter'. Now you see what the die rolled. If you wish to roll the die once again with the same amount of sides, just press 'enter' as many times as you please. If you however decide that you would rather change the amount of sides for the next roll, simply type in a new number and press 'enter' to continue.
 
-Remember that a die can't have more than 2^(31) - 1 sides (2,147,483,647 sides). If you enter a number greater than that, the program will behave strange. To fix this behaviour, simply type a number that is within the range and press 'enter'.
+Remember that a die can't have more than 2^(31) - 1 sides (2,147,483,647 sides). If you enter a number greater than that, the program will behave strangely. To fix this behaviour, simply type a number that is within the range and press 'enter'.
 
 ### Pre-compiled binary
 
-In the folder "Win32", there is a pre-compiled executable file for those using a Windows operating system and do not wish to compile the source code. I will work on both 32-bit and 64-bit versions of Windows.  
+In the folder "Win32", there is a pre-compiled executable file for those using a Windows operating system and do not wish to compile the source code. It will work on both 32-bit and 64-bit versions of Windows.  
 If you don't trust this file to be compiled from the unaltered source code in the "src" folder, or simply don't neeed it, feel free to delete it.
 
 There is however no pre-compiled binary file for execution on a UNIX-like system, like GNU/Linux or Mac OS X. If you are using a UNIX-like system, you probably know how to compile a program from the source code. If otherwise, you may figure it out from the instructions below.
