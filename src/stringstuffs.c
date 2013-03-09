@@ -1,5 +1,5 @@
-/************************************************************************/
-/*                    Copyright © 2013 Max Wällstedt                    */
+ï»¿/************************************************************************/
+/*                    Copyright Â© 2013 Max WÃ¤llstedt                    */
 /*                                                                      */
 /* This file is part of MaxDice.                                        */
 /*                                                                      */
@@ -18,17 +18,18 @@
 /*                                                                      */
 /************************************************************************/
 
-#include <curses.h>
-#include <string.h>
-#include <stdlib.h>
-#include <locale.h>
-#include <time.h>
-#include "readstring.h"
+#include "maxdice.h"
 
-#define VERSION_NUMBER "1.0"
+int
+str_to_int (char *str)
+{
+    int number = 0, i = 0;
 
-extern void start_maxdice (int number, int splash);
-extern void move_up (int *y, int maxy, int maxx);
-extern void first_draw (int maxx);
-extern int splash_screen ();
-extern int str_to_int (char *str);
+    while (*(str + i) != '\0')
+    {
+        number = number * 10 + *(str + i) - '0';
+        i++;
+    }
+
+    return number;
+}

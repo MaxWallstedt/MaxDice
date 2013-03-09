@@ -35,7 +35,7 @@ user@machine:/path/to/MaxDice$ gcc -Wall /src/*.c -o MaxDice -lncursesw
 
 Windows:
 ```
-C:\path\to\MaxDice> gcc -Wall /src/*.c -o MaxDice.exe -lpdcurses
+C:\path\to\MaxDice> gcc -Wall /src/*.c -o MaxDice.exe -lpdcurses -static
 ```
 
 ### License

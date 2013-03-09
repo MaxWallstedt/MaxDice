@@ -1,29 +1,97 @@
 /************************************************************************/
-/*                 Copyright © 2012-2013 Max Wällstedt                  */
+/*                    Copyright © 2013 Max Wällstedt                    */
 /*                                                                      */
 /* This file is part of MaxDice.                                        */
 /*                                                                      */
-/* MaxDice is free software: you can redistribute it and/or modify      */
-/* it under the terms of the GNU General Public License as published by */
+/* MaxDice is free software: you can redistribute it and/or modify it   */
+/* under the terms of the GNU General Public License as published by    */
 /* the Free Software Foundation, either version 3 of the License, or    */
 /* (at your option) any later version.                                  */
 /*                                                                      */
-/* MaxDice is distributed in the hope that it will be useful,           */
-/* but WITHOUT ANY WARRANTY; without even the implied warranty of       */
-/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        */
-/* GNU General Public License for more details.                         */
+/* MaxDice is distributed in the hope that it will be useful, but       */
+/* WITHOUT ANY WARRANTY; without even the implied warranty of           */
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                 */
+/* See the GNU General Public License for more details.                 */
 /*                                                                      */
 /* You should have received a copy of the GNU General Public License    */
-/* along with MaxDice.  If not, see <http://www.gnu.org/licenses/>.     */
+/* along with MaxDice. If not, see  <http://www.gnu.org/licenses/>.     */
 /*                                                                      */
 /************************************************************************/
 
 #include "maxdice.h"
 
-int splash(void)
+void
+move_up (int *y, int maxy, int maxx)
+{
+    int i, j, ch;
+
+    while (*y >= maxy)
+    {
+        for (j = 1; j < *y - 2; j++)
+        {
+            for (i = 0; i < maxx; i++)
+            {
+                ch = mvinch (j + 2, i);
+                mvaddch (j, i, ch);
+            }
+        }
+
+        for (i = 0; i < maxx; i++)
+        {
+            mvaddch (*y - 1, i, ' ');
+            mvaddch (*y, i, ' ');
+        }
+
+        *y -= 2;
+    }
+
+    return;
+}
+
+void
+first_draw (int maxx)
+{
+    int i;
+
+    maxx -= 9;
+    move (0, 0);
+
+    if (maxx % 2 == 0)
+    {
+        maxx /= 2;
+
+        for (i = 0; i < maxx; i++)
+            addch ('=');
+
+        printw (" MaxDice ");
+
+        for (i = 0; i < maxx; i++)
+            addch ('=');
+    }
+
+    else
+    {
+        maxx--;
+        maxx /= 2;
+
+        for (i = 0; i < maxx; i++)
+            addch ('=');
+
+        printw (" MaxDice ");
+
+        for (i = 0; i <= maxx; i++)
+            addch ('=');
+    }
+
+    move (1, 0);
+
+    return;
+}
+
+int
+splash_screen ()
 {
 	int key;
-	curs_set(0);
 
 	mvprintw(0, 22, "II");
 	mvprintw(1, 14, "IIIIIIIIIIII");
@@ -55,7 +123,6 @@ int splash(void)
 	} while (key != '\n' && key != '\r' && key != 459 && key != 'q');
 
 	erase();
-	curs_set(1);
 
 	if (key == 'q')
 		return 1;
